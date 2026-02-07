@@ -7,6 +7,7 @@ function MyFun() {
 }
 const uname1 = "Tejani";
 // this is not valid
+
 // const reactElement = {      // tags are converted to like this
 //   type: "a",
 //   props: {
