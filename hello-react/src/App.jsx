@@ -7,7 +7,6 @@ function App() {
   <h1>I am Veer</h1>
   </>
 );
-
 }
 
 export default App;

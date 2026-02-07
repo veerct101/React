@@ -5,7 +5,6 @@ import React from 'react';
 function MyFun() {
   return <h1>Hello World</h1>;
 }
-
 const uname1 = "Tejani";
 // this is not valid
 // const reactElement = {      // tags are converted to like this
