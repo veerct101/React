@@ -1,8 +1,12 @@
 
+import Tmp from "./tmp"
 function App() {
-  return (
-    <h1>I am Veer</h1>
-  );
+  return(
+    <>
+  <Tmp />
+  <h1>I am Veer</h1>
+  </>
+);
 }
 
-export default App
+export default App;
