@@ -6,7 +6,7 @@ import Card1 from '../component/card1'
 function App() {
   return (
     <>
-      <h1 className="bg-green-400 text-black">TailWind test</h1>
+      <h1 className="bg-green-300 text-black">TailWind test</h1>
        <div
       className="flex flex-col rounded-xl  p-4"
       style={{
