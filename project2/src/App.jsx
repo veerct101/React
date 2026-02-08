@@ -8,6 +8,12 @@ function App() {
     console.log(counter);
     if(counter>=20) return 20;
     setCounter(counter+1);
+    // setCounter(counter+1);  line 10 to 12 will do in batch so final ans will only increase by only last operation
+    // setCounter(counter+1);
+
+    setCounter(counter => counter+1); // solution of upper problem is this it will update by seeing previous
+    setCounter(counter => counter+1);
+    setCounter(counter => counter+1);
   }
 
   const sub = ()=>{
