@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import "./App.css";
 
 function App() {
@@ -7,6 +7,9 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
   const [copied, setCopied] = useState(false);
+
+  // 👉 reference for input field
+  const passwordRef = useRef(null);
 
   // Generate password
   const passwordGenerator = useCallback(() => {
@@ -29,15 +32,18 @@ function App() {
     passwordGenerator();
   }, [passwordGenerator]);
 
-  // Copy password
+  // Copy password using ref
   const copyPassword = useCallback(() => {
-    if (!password) return;
+    if (!passwordRef.current) return;
 
-    window.navigator.clipboard.writeText(password);
+    passwordRef.current.select();
+    passwordRef.current.setSelectionRange(0, 999); // for mobile
+
+    window.navigator.clipboard.writeText(passwordRef.current.value);
+
     setCopied(true);
-
     setTimeout(() => setCopied(false), 1500);
-  }, [password]);
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-700">
@@ -49,6 +55,7 @@ function App() {
 
         <div className="flex items-center bg-gray-700 rounded-lg overflow-hidden mb-5">
           <input
+            ref={passwordRef}   // 👈 ref attached here
             type="text"
             value={password}
             className="w-full bg-transparent px-4 py-2 outline-none text-lg"
@@ -65,7 +72,6 @@ function App() {
         </div>
 
         <div className="space-y-4 text-sm">
-
           <div className="flex items-center justify-between">
             <label className="text-gray-300">Length: {length}</label>
             <input
@@ -99,8 +105,8 @@ function App() {
               Symbols
             </label>
           </div>
-
         </div>
+
       </div>
     </div>
   );
